@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useCallback} from 'react';
 import { ImageBackground, Text, SafeAreaView, StyleSheet, View} from 'react-native';
 import colors from '../colors';
+import { useFonts } from 'expo-font';
+// import * as SplashScreen from 'expo-splash-screen';
+
+// SplashScreen.preventAutoHideAsync();
 
 function WelcomeScreen(props) {
 
+  const [fontsLoaded] = useFonts({
+    'pd-reg': require('../../assets/fonts/PlayfairDisplay-Regular.ttf'),
+  });
+
+  // const onLayoutRootView = useCallback(async () => {
+  //   if (fontsLoaded) {
+  //     console.log(fontsLoaded)
+  //     await SplashScreen.hideAsync();
+  //   }
+  // }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
     return (
+      // <View style={styles.welView} onLayout={onLayoutRootView}>
       <View style={styles.welView}>
           <ImageBackground source={require("../../assets/images/background.jpg")} style={styles.welcomePic}/> 
           <Text style={[styles.welcomeText, styles.boxShadow]}>Motivational Quotes</Text>
@@ -28,6 +48,7 @@ const styles = StyleSheet.create({
     },
     welcomeText: {
         textAlign: 'center',
+        fontFamily: 'pd-reg',
         fontSize: 50,
         fontWeight:'bold',
         color: colors.secondary,

@@ -24,9 +24,9 @@ export default function App() {
     <SafeAreaView style={styles.container}>
 
       <StatusBar style='auto'/>
-      <Animated.View style={{opacity: fadeAnim}} pointerEvents={'none'}>
+      {/* <Animated.View style={{opacity: fadeAnim}} pointerEvents={'none'}> */}
         <WelcomeScreen />
-      </Animated.View>
+      {/* </Animated.View> */}
       <QuoteScreen />
     </SafeAreaView>
   );
